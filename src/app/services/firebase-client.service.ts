@@ -19,4 +19,25 @@ export class FirebaseClientService {
     .collection(environment.firebaseCollections.product)
     .snapshotChanges();
   }
+
+ getProducts(key:string):any{
+    return this.firebaseclient
+    .collection(environment.firebaseCollections.product)
+    .doc(key)
+    .valueChanges();
+  }
+
+ 
+  deleteProduct(key:string):any{
+    return this.firebaseclient
+    .collection(environment.firebaseCollections.product)
+    .doc(key).delete()
+  }
+
+  updateProduct(product:Product):any{
+        return this.firebaseclient
+        .collection(environment.firebaseCollections.product)
+        .doc(product.key)
+        .update(product)
+  }
 }

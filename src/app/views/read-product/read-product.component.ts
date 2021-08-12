@@ -13,12 +13,20 @@ export class ReadProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.firebase.readAllProducts().subscribe((response:any)=>{
+      this.allProducts = []
       response.forEach((element:any) => {
-        var product = element.payload.doc.data() as Product;
+       
+        var product:Product = Object.assign(new Product(),element.payload.doc.data());
         product.key = element.payload.doc.id;
+    
         this.allProducts.push(product)
       });
       console.log(this.allProducts)
+    })
+  }
+  onProductDelete(key:string):any{
+    this.firebase.deleteProduct(key).then((response:any)=>{
+
     })
   }
 

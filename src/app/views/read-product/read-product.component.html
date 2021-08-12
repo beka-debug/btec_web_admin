@@ -1,4 +1,7 @@
-<section class="col-md-6 m-auto">
+<section class="col-md-12 m-auto">
+  <a 
+  routerLink = "/createproduct"
+  class="btn btn-primary">Add Product</a>
 <table class="table">
     <thead>
       <tr>
@@ -16,13 +19,17 @@
        
         <td>{{item.name}}</td>
         <td>{{item.description}}</td>
-        <td>{{item.securityPackageType}}</td>
+      <td>{{item.type()}}</td> 
         <td>
-          <img [src]="item.imageSrc" alt="picture">
+          <img [src]="item.image" alt="picture">
         </td>
         <td>{{item.price}}</td>
-        <td><button class="btn btn-warning">Update</button></td>
-        <td><button class="btn btn-danger">Delete</button></td>
+        <td><a
+          routerLink="/updateproduct/{{item.key}}"
+          class="btn btn-warning">Update</a></td>
+        <td><button
+          (click)="onProductDelete(item.key)"
+          class="btn btn-danger">Delete</button></td>
 
       </tr>
 

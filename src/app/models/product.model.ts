@@ -2,12 +2,15 @@ export enum SecurityTypes{Basic,Standart,Deluxe,Custom}
 
 export class Product{
     key!:string;
-    imageSrc!:string;
+    image!:string;
     name!:string;
     description!:string;
     price!:number;
     securityPackageType!:SecurityTypes;
-    /**
+    public type():any{
+       return SecurityTypes[Number(this.securityPackageType)]
+    }
+        /**
      *
      */
     // constructor(imageSrc:string,name:string, description:string,price:number, securityPackageType:SecurityTypes) {
